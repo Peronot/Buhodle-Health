@@ -114,7 +114,7 @@ function Footer() {
       </div>
 
       <div className="mx-auto mt-14 max-w-7xl border-t border-white/15 py-8 text-center text-base font-bold sm:mt-20 sm:text-xl">
-        BHPI 2026 Developed by JTech Solutions. All Rights Reserved!
+        BHPI 2026 Developed by Merit Advisory. All Rights Reserved!
       </div>
     </footer>
   )
