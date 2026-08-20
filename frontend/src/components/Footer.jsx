@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import logo from '../assets/buhoodle.png'
+import { slugify } from '../data/navigation.js'
 
 const quickLinks = ['About Buhodle', 'Admissions', 'Academics', 'Students', 'Media']
 
@@ -20,14 +21,16 @@ const socialLinks = [
 
 function Footer() {
   return (
-    <footer className="bg-[#2f3a91] px-4 pt-16 text-white sm:px-10 sm:pt-20 lg:pt-28">
-      <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.3fr_0.7fr_1fr]">
+    <footer className="relative overflow-hidden bg-[#26348f] px-4 pt-16 text-white sm:px-10 sm:pt-20 lg:pt-28">
+      <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.2)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+      <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.3fr_0.7fr_1fr] lg:gap-14">
         <div>
           <div className="flex items-center gap-4 sm:gap-5">
             <img
               src={logo}
               alt="Buhodle Health Professional Institute logo"
-              className="h-16 w-16 flex-none rounded-full bg-white object-contain p-1 sm:h-24 sm:w-24"
+              className="h-16 w-16 flex-none rounded-full bg-white object-contain p-1 shadow-2xl shadow-black/15 sm:h-24 sm:w-24"
             />
             <div className="min-w-0">
               <p className="text-2xl font-semibold leading-tight sm:text-4xl">
@@ -39,7 +42,7 @@ function Footer() {
             </div>
           </div>
 
-          <p className="mt-8 max-w-2xl text-base font-semibold leading-8 text-white sm:mt-12 sm:text-xl sm:leading-9">
+          <p className="mt-8 max-w-2xl text-base font-semibold leading-8 text-white/88 sm:mt-12 sm:text-xl sm:leading-9">
             Buhodle Health Professional Institute provides practical healthcare
             education through diploma programs in laboratory, midwifery, nursing,
             pharmacology, and nutrition.
@@ -52,7 +55,7 @@ function Footer() {
                 target={url.startsWith('http') ? '_blank' : undefined}
                 rel={url.startsWith('http') ? 'noreferrer' : undefined}
                 key={label}
-                className="flex h-12 w-12 items-center justify-center rounded-md bg-white/10 text-lg font-extrabold transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white sm:h-16 sm:w-16 sm:text-2xl"
+                className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-lg font-extrabold shadow-lg shadow-black/5 transition hover:-translate-y-0.5 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white sm:h-16 sm:w-16 sm:text-2xl"
                 aria-label={name}
               >
                 {label}
@@ -61,13 +64,13 @@ function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="rounded-3xl border border-white/10 bg-white/[0.07] p-6 backdrop-blur-md lg:bg-transparent lg:p-0 lg:backdrop-blur-0">
           <h2 className="text-2xl font-extrabold sm:text-3xl">Quick Links</h2>
-          <nav className="mt-8 flex flex-col gap-5 text-xl font-semibold text-white/85 sm:mt-12 sm:gap-8 sm:text-2xl">
+          <nav className="mt-8 flex flex-col gap-4 text-lg font-semibold text-white/85 sm:mt-12 sm:gap-6 sm:text-xl">
             {quickLinks.map((link) => (
               <a
-                href={`#${link.toLowerCase().replaceAll(' ', '-')}`}
-                className="transition hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                href={`#/${slugify(link)}`}
+                className="transition hover:translate-x-1 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
                 key={link}
               >
                 {link}
@@ -76,9 +79,9 @@ function Footer() {
           </nav>
         </div>
 
-        <div>
+        <div className="rounded-3xl border border-white/10 bg-white/[0.07] p-6 backdrop-blur-md lg:bg-transparent lg:p-0 lg:backdrop-blur-0">
           <h2 className="text-2xl font-extrabold sm:text-3xl">Contact Details</h2>
-          <div className="mt-8 space-y-7 text-base font-semibold leading-7 text-white/90 sm:mt-12 sm:space-y-8 sm:text-xl sm:leading-8">
+          <div className="mt-8 space-y-7 text-base font-semibold leading-7 text-white/90 sm:mt-12 sm:space-y-8 sm:text-lg sm:leading-8">
             <div className="flex gap-4">
               <MapPin className="mt-1 h-7 w-7 flex-none" aria-hidden="true" />
               <div>
@@ -113,7 +116,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-14 max-w-7xl border-t border-white/15 py-8 text-center text-base font-bold sm:mt-20 sm:text-xl">
+      <div className="relative mx-auto mt-14 max-w-7xl border-t border-white/15 py-8 text-center text-sm font-bold text-white/88 sm:mt-20 sm:text-lg">
         BHPI 2026 Developed by Merit Advisory. All Rights Reserved!
       </div>
     </footer>

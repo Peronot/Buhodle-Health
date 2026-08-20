@@ -1,11 +1,25 @@
 @import "tailwindcss";
 
+:root {
+  --bhpi-blue: #11289f;
+  --bhpi-blue-2: #2f3a91;
+  --bhpi-green: #159a35;
+  --bhpi-green-2: #20c979;
+  --bhpi-ink: #111936;
+  --bhpi-soft: #f4f8ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #f8fafc;
-  color: #0f172a;
+  background:
+    linear-gradient(180deg, #ffffff 0%, var(--bhpi-soft) 48%, #ffffff 100%);
+  color: var(--bhpi-ink);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -17,6 +31,36 @@ body {
 
 .hero-video-fade {
   animation: hero-video-fade 1200ms ease-out both;
+}
+
+.surface-grid {
+  background-image:
+    linear-gradient(rgba(17, 40, 159, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 40, 159, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 24px 80px rgba(17, 40, 159, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.card-lift {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 80px rgba(17, 40, 159, 0.16);
+}
+
+.mobile-menu-enter {
+  animation: mobile-menu-enter 180ms ease-out both;
 }
 
 @keyframes hero-video-fade {
@@ -31,8 +75,34 @@ body {
   }
 }
 
+@keyframes mobile-menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .hero-video-fade {
     animation: none;
+  }
+
+  .mobile-menu-enter {
+    animation: none;
+  }
+
+  .card-lift,
+  .card-lift:hover {
+    transform: none;
+    transition: none;
   }
 }

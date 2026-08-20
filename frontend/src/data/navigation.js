@@ -63,6 +63,13 @@ export function slugify(value) {
 
 export function findPageBySlug(slug) {
   for (const group of navigation) {
+    if (slugify(group.label) === slug) {
+      return {
+        group: group.label,
+        title: group.label,
+      }
+    }
+
     const item = group.items.find((entry) => slugify(entry) === slug)
 
     if (item) {
